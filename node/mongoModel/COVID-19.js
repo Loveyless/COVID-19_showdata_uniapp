@@ -6,8 +6,8 @@ const COVID_19Rule = mongoose.Schema({
   desc: Object,
   riskarea: Object,
   date: {
-    type: Date,
-    default: Date.now(),
+    type: String,
+    default: new Date().toLocaleString(),
   },
 });
 

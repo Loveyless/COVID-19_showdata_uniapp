@@ -7,10 +7,14 @@ COVID_19_world
 
 
 
+COVID_19的24行 iosapp端用不了抽屉组件
+网页的用抽屉跑了 app换了个方法 直接切换
+网页路径:COVID-19_showdata_uniapp\unpackage\dist\build\h5
+
 
 ```js
 
-//onPullDownRefresh 想判断的时候结果返回值是primise 只好用await接
+//onPullDownRefresh下拉事件 想判断的时候结果返回值是primise 只好用await接
 //可能带async的函数返回值都是promise
 
 <script>

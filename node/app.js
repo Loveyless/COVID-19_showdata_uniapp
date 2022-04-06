@@ -6,7 +6,6 @@ const COVID_19_world_Model = require("./mongoModel/COVID_19_world")
 const axios = require("axios");
 const getCOVID_19Router = require("./expressRouter/getCOVID-19")
 
-
 // 设置跨域和相应数据格式
 app.all('*', (req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*')
@@ -32,19 +31,19 @@ db.then(
     //十分钟获取一次数据
     setInterval(async() => {
 
-    //删除之前的数据
-    COVID_19_Model.deleteMany({},(err) => { 
-      err && console.log(err.message);
-    })
-    COVID_19_world_Model.deleteMany({},(err) => { 
-      err && console.log(err.message);
-    })
-
-    //获取数据存入数据
-    const data1 = await axios.get("http://api.tianapi.com/ncov/index?key=bba54c417b3678e22505a1ef69b47fd0");
-    COVID_19_Model.create(data1.data.newslist[0]);
-    const data2 = await axios.get("http://api.tianapi.com/ncovabroad/index?key=bba54c417b3678e22505a1ef69b47fd0")
-    COVID_19_world_Model.create(data2.data)
+      //删除之前的数据
+      COVID_19_Model.deleteMany({},(err) => { 
+        err && console.log(err.message);
+      })
+      COVID_19_world_Model.deleteMany({},(err) => { 
+        err && console.log(err.message);
+      })
+      
+      //获取数据存入数据
+      let data1 = await axios.get("http://api.tianapi.com/ncov/index?key=bba54c417b3678e22505a1ef69b47fd0");
+      COVID_19_Model.create({...data1.data.newslist[0],date:new Date().toLocaleString()});
+      let data2 = await axios.get("http://api.tianapi.com/ncovabroad/index?key=bba54c417b3678e22505a1ef69b47fd0")
+      COVID_19_world_Model.create({...data2.data,date:new Date().toLocaleString()})
 
     }, 650000);
 

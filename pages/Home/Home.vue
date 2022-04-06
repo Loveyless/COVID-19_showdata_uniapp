@@ -1,10 +1,10 @@
 <template>
 	<view class="content">
 		<view class="">
-				作者微信:<a href="tel:Loveyless">Loveyless</a>
+				作者微信:<text>Loveyless</text>
 		</view>
 		<view class="">
-			作者邮箱:<a href="lazysometimes@icloud.com">lazysometimes@icloud.com</a>
+			作者邮箱:<text>lazysometimes@icloud.com</text>
 		</view>
 	</view>
 </template>

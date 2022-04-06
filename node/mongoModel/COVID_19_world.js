@@ -4,8 +4,8 @@ const mongoose = require("mongoose");
 const COVID_19_worldRule = new mongoose.Schema({
   newslist: Array,
   date: {
-    type: Date,
-    default: Date.now(),
+    type: String,
+    default: new Date().toLocaleString(),
   },
 });
 
