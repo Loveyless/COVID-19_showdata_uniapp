@@ -45,7 +45,7 @@ db.then(
       let data2 = await axios.get("http://api.tianapi.com/ncovabroad/index?key=bba54c417b3678e22505a1ef69b47fd0")
       COVID_19_world_Model.create({...data2.data,date:new Date().toLocaleString()})
 
-    }, 650000);
+    }, 600000);
 
 
     app.use(getCOVID_19Router)
